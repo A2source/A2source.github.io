@@ -1,2 +1,2 @@
-# a2.github.io
+# bruh
 My website (for testing buddy)
