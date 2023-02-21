@@ -2,7 +2,6 @@
 
 /* stole from sass website, for testing */
 
-$font-stack: optima, sans-serif;
 $primary-color: #222222;
 
 /* animations yo */
@@ -13,7 +12,6 @@ $primary-color: #222222;
 }
 
 body {
-  font: 100% $font-stack;
   color: #E8E6E3;
   background: linear-gradient(90deg, #181A1B 0%, #1A1C1D 3%, #1A1C1D 97%, #181A1B 100%);
 
@@ -24,7 +22,6 @@ body {
 h1 { 
   position: relative;
   padding: 2px;
-  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; 
   font-size: 50px; 
   font-style: normal; 
   font-variant: normal; 
@@ -41,7 +38,6 @@ h1 {
 } 
 
 h3 { 
-  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   font-size: 35px;
   font-style: normal;
   font-variant: normal;
@@ -53,7 +49,6 @@ h3 {
 
 p { 
   padding: 1px;
-  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; 
   font-size: 26px; 
   font-style: normal; 
   font-variant: lighter; 
@@ -68,7 +63,6 @@ p {
 
 div {
   padding: 1px;
-  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; 
   font-size: 25px; 
   font-style: normal; 
   font-variant: lighter; 
@@ -81,7 +75,6 @@ div {
 
 blockquote { 
   
-  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; 
   font-size: 25px; 
   font-style: normal; 
   font-variant: lighter; 
@@ -92,7 +85,6 @@ blockquote {
 } 
 
 pre { 
-  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   font-size: 25px;
   font-style: normal;
   font-variant: normal;
@@ -102,7 +94,6 @@ pre {
 }
 
 footer {
-  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-variant: lighter;
