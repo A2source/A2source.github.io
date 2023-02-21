@@ -183,7 +183,7 @@ audio {
 
 /* schcrollbar */
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 7px;
   background-color: #272626;
 }
 
@@ -192,6 +192,6 @@ audio {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: gray;
+  background: rgb(92, 92, 92);
   border-radius: 5px;
 }
