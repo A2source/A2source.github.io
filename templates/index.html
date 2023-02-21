@@ -1,13 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Welcome to A2Site!
-</h1>
-<p>
-Hi! Welcome to [A2]'s website! here you can see all of the projects I am currently working on, alongside teasers and other snippets of my work! <br>
-</p>
-<footer>
-Created using Zola Hosted by Github Pages
+
+<nav class="container">
+  <ul>
+    <li>
+      <a href="/blog/">
+        <span> Current Projects </span>
+      </a>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a href="/blog/">
+        <span> All Blog Posts </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="div">
+
+  <h1 class="title">
+    Welcome to A2Site!
+  </h1>
+
+  <p>
+    Hi! Welcome to <a href = "https://youtube.com/@A2music">[A2]'s</a> website! here you can see all of the projects I am currently working on, alongside teasers and other snippets of my work! <br>
+  </p>
+
+</div>
+
+<footer >
+Created using <a href = "https://getzola.org">Zola</a> &#8226 Hosted by <a href = "https://pages.github.com/">Github Pages</a>
 </footer>
+
 {% endblock content %}

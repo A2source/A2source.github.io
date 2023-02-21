@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
+{% set css = load_data(path="public/style.css") %}
+<style>
+  {{css | safe}}
+
+  .div {
+    border: 5px;
+    border-style: dashed solid;
+    border-color: #111;
+    background-color: #1d1d1d;
+    transform: scale(0.95, 1);
+    padding-top: 15px;
+    padding-bottom: 25px;
+  }
+
+</style>
+
 <head>
   <meta charset="utf-8">
-  <title>[A2]'s Thunderdome</title>
+  <title>[A2] Site</title>
 
-  CSS stolen from funkin' crew!!! lmao just for testing <br>
-  or maybe not. we'll see
-  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>

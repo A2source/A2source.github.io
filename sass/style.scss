@@ -2,18 +2,140 @@
 
 /* stole from sass website, for testing */
 
-$font-stack: Helvetica, sans-serif;
-$primary-color: #333;
+$font-stack: optima, sans-serif;
+$primary-color: #222;
+
+/* animations yo */
+@keyframes hover {
+  0% { top: 0px; } 
+  50% { top: 7px; }
+  100% { top: 0px; }
+}
 
 body {
   font: 100% $font-stack;
-  color: $primary-color;
+  color: white;
+  background-color: $primary-color;
+
 }
 
-h1 {
-    text-align: center;
-    padding: 0px;
+h1 { 
+  position: relative;
+  padding: 2px;
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; 
+  font-size: 50px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  line-height: 35px;
+  text-shadow: 5px 5px 15px black;
+
+  margin: 5px 50px 22px 45px;
+
+  animation-name: hover;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+} 
+
+h3 { 
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+  font-size: 35px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 18.7px;
+
+  margin: 5px 50px 25px;
+} 
+
+p { 
+  padding: 1px;
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; 
+  font-size: 25px; 
+  font-style: normal; 
+  font-variant: lighter; 
+  font-weight: 400; 
+  line-height: 21px;
+  text-shadow: 2px 2px 7.5px black;
+
+  margin: 5px 50px 25px;
+} 
+
+div {
+  padding: 1px;
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; 
+  font-size: 25px; 
+  font-style: normal; 
+  font-variant: lighter; 
+  font-weight: 400; 
+  line-height: 21px;
+  text-shadow: 2px 2px 7.5px black;
+
+  margin: 5px 50px 25px;
 }
+
+blockquote { 
+  
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; 
+  font-size: 25px; 
+  font-style: normal; 
+  font-variant: lighter; 
+  font-weight: 400; 
+  line-height: 24.2857px; 
+
+  margin: 5px 50px 25px;
+} 
+
+pre { 
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+
+  margin: 5px 50px 25px;
+}
+
+footer {
+  font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-variant: lighter;
+  opacity: 50%;
+  color: lightgray;
+  text-shadow: 2px 2px 5px black;
+  text-align: center;
+}
+
+code {
+  margin: 5px 50px 25px;
+  display: inline-block;
+  background-color: #290226;
+  padding: 10px;
+  padding-right: 50px;
+  border-radius: 15px;
+  font-size: 15px;
+  box-shadow: 5px 5px 10px #111;
+}
+
+/* link stuff yay */
+a:link {
+  color: yellow;
+}
+
+a:visited {
+  color: gray;
+}
+
+a:hover {
+  color: darkmagenta;
+}
+
+a:active {
+  color: magenta;
+}
+/* ok link stuff over now */
 
 nav {
   ul {
@@ -29,9 +151,4 @@ nav {
     padding: 6px 12px;
     text-decoration: none;
   }
-}
-
-a {
-	background-color: black;
-	background: black;
 }
