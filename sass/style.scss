@@ -2,9 +2,6 @@
 
 /* stole from sass website, for testing */
 
-$font-stack: "Segoe UI", sans-serif;
-$primary-color: #222222;
-
 /* animations yo */
 @keyframes hover {
   0% { top: 0px; } 
@@ -13,7 +10,7 @@ $primary-color: #222222;
 }
 
 body {
-  font: $font-stack;
+  font-family: Geneva, Verdana, sans-serif;
   color: #E8E6E3;
   background: linear-gradient(90deg, #181A1B 0%, #1A1C1D 3%, #1A1C1D 97%, #181A1B 100%);
 
@@ -77,6 +74,7 @@ div {
 
 blockquote { 
   
+
   font-size: 25px; 
   font-style: normal; 
   font-variant: lighter; 
