@@ -181,17 +181,17 @@ audio {
   padding: 50px 25px 50px 50px;
 }
 
-/* schcroll bar */
+/* schcrollbar */
 ::-webkit-scrollbar {
   width: 20px;
+  background-color: #272626;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  background-color: black;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: red;
-  border-radius: 10px;
+  background: gray;
+  border-radius: 5px;
 }
