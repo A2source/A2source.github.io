@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center;" class="title">
+  {{ section.title }}
+</h1>
+<ul>
+  {% for page in section.pages %}
+
+    {% set image = resize_image(path=page.description, width=400, height=450, op="fit") %}
+    <a href="{{ page.permalink | safe }}" target="_self"> 
+        <img src= "{{ image.url }}">
+    </a>
+
+  {% endfor %}
+</ul>
+{% endblock content %}
