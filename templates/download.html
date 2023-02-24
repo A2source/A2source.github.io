@@ -4,14 +4,16 @@
 <h1 style="text-align: center;" class="title">
   {{ section.title }}
 </h1>
-<ul>
+
+<div class="wrapper">
   {% for page in section.pages %}
 
-    {% set image = resize_image(path=page.description, width=400, height=450, op="fit") %}
+    {% set image = resize_image(path=page.extra.thumb, width=500, height=300, op="fit") %}
     <a href="{{ page.permalink | safe }}" target="_self"> 
         <img src= "{{ image.url }}">
     </a>
 
   {% endfor %}
-</ul>
+</div>
+
 {% endblock content %}

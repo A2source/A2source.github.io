@@ -1,8 +1,81 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
 {% block content %}
+
 <h1 class="title">
   {{ page.title }}
 </h1>
+
+<div id="a2Download">
+
+</div>
+
+{% set directory = page.extra.dir_pointer %}
+
+<script>
+    function downloadFile(url) 
+    {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', url, true);
+        xhr.responseType = 'blob';
+
+        xhr.onload = function(e) 
+        {
+            if (this.status == 200) 
+            {
+                var blob = new Blob([this.response], {type: 'application/octet-stream'});
+                var downloadUrl = URL.createObjectURL(blob);
+                
+                var a = document.createElement("a");
+                a.href = downloadUrl;
+                a.download = url.substring(url.lastIndexOf('/')+1);
+                document.body.appendChild(a);
+                a.click();
+            }
+        };
+        xhr.send();
+    }
+</script>
+
+<!-- DUDE chatgpt coming in clutch what the hell (I learned that I can use the github api and javascript. cool stuff!) -->
+<script>
+
+    // oh my god guys ascii / html codes for special characters are kicking my ass !!!
+    var url = "https://api.github.com/repos/A2source/A2archive/contents/{{ directory }}".replace('&#x2F;', '/');
+
+    var wrapper = document.getElementById("a2Download");
+    var finalHTML = '<div class="wrapper-file">';
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+
+        var files = data.filter(item => item.type == "file");
+        var folders = data.filter(item => item.type == "dir");
+
+        // for each file in the found directory...
+        for (var i = 0; i < files.length; i++)
+        {
+         //   finalHTML += '<p class="fileData">' + files[i].name + '</p>';
+            finalHTML += `<a class="fileDownload"> <img src="${files[i].download_url}" width="200" height="200" onclick="downloadFile('${files[i].download_url}')"> </a>`;
+        }
+
+        // same thing for folder, just storing its path instead
+        for (var i = 0; i < folders.length; i++)
+        {
+            finalHTML += `<p class="folderData"> ${folders[i].html_url} </p><br/><br/>`;
+        }
+
+        finalHTML += '</div>';
+
+        wrapper.innerHTML += finalHTML;
+
+        })
+    .catch(error => console.error(error));
+</script>
+
 {{ page.content | safe }}
+
 {% endblock content %}
