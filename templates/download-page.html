@@ -8,36 +8,35 @@
 </h1>
 
 <div id="a2Download">
+    <script>
+        function downloadFile(url) 
+        {
+            var xhr = new XMLHttpRequest();
 
+            xhr.open('GET', url, true);
+            xhr.responseType = 'blob';
+
+            xhr.onload = function(e) 
+            {
+                if (this.status == 200) 
+                {
+                    var blob = new Blob([this.response], {type: 'application/octet-stream'});
+                    var downloadUrl = URL.createObjectURL(blob);
+                    
+                    var a = document.createElement("a");
+                    a.href = downloadUrl;
+                    a.download = url.substring(url.lastIndexOf('/')+1);
+                    document.body.appendChild(a);
+                    a.click();
+                }
+            };
+            xhr.send();
+        }
+   </script>
 </div>
 
 {% set directory = page.extra.dir_pointer %}
 
-<script>
-    function downloadFile(url) 
-    {
-        var xhr = new XMLHttpRequest();
-
-        xhr.open('GET', url, true);
-        xhr.responseType = 'blob';
-
-        xhr.onload = function(e) 
-        {
-            if (this.status == 200) 
-            {
-                var blob = new Blob([this.response], {type: 'application/octet-stream'});
-                var downloadUrl = URL.createObjectURL(blob);
-                
-                var a = document.createElement("a");
-                a.href = downloadUrl;
-                a.download = url.substring(url.lastIndexOf('/')+1);
-                document.body.appendChild(a);
-                a.click();
-            }
-        };
-        xhr.send();
-    }
-</script>
 
 <!-- DUDE chatgpt coming in clutch what the hell (I learned that I can use the github api and javascript. cool stuff!) -->
 <script>
@@ -55,11 +54,28 @@
         var files = data.filter(item => item.type == "file");
         var folders = data.filter(item => item.type == "dir");
 
+        console.log(`NUMBER OF FILES FOUND: ${files.length}`)
+
         // for each file in the found directory...
         for (var i = 0; i < files.length; i++)
         {
          //   finalHTML += '<p class="fileData">' + files[i].name + '</p>';
-            finalHTML += `<a class="fileDownload"> <img src="${files[i].download_url}" width="200" height="200" onclick="downloadFile('${files[i].download_url}')"> </a>`;
+            var file = files[i];
+
+            // grab file extension (no need for copy/paste code! ya idiot!)
+            var ext = file.name.split('.')[1];
+
+            if(ext == 'png' || ext == 'gif')
+            {
+                // image stuff (just display the image, no need for a fancy graphic!)
+                finalHTML += `<a class="fileDownload"> <img src="${file.download_url}" width="200" height="200" onclick="downloadFile('${file.download_url}')"> </a>`;
+            }
+            else
+            {
+                // we love automation and logic woopwoop
+                console.log(`goofy ahh ${ext} detected!`);
+                finalHTML += `<a class="fileDownload"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/${ext}.png" width="200" height="200" onclick="downloadFile('${file.download_url}')"> </a>`;
+            }
         }
 
         // same thing for folder, just storing its path instead
