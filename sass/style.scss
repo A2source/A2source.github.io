@@ -68,7 +68,7 @@ div {
   line-height: 21px;
   text-shadow: 2px 2px 7.5px black;
 
-  margin: 5px 50px 25px;
+  margin: 1em;
 }
 
 blockquote { 
@@ -200,6 +200,7 @@ audio {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
+  margin: 0px;
 }
 
 .file {
@@ -209,9 +210,10 @@ audio {
 
 .file-img,
 .file-img-icon  {
-  cursor: pointer;
   margin: 5px;
   text-align: center;
+  width: 200;
+  height: 200;
 }
 
 .file-img > img {
@@ -227,6 +229,19 @@ audio {
 
 .file-label {
   white-space: nowrap;
-  margin: 0 auto;
+  margin: 5 auto;
   text-align: center;
+}
+
+.file-download {
+  position: absolute;
+  text-align: center;
+  cursor: pointer;
+}
+
+.file-download > img {
+  position: relative;
+  left: 170px;
+  bottom: 80px;
+  padding: 0px;
 }

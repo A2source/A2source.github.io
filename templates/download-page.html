@@ -70,14 +70,16 @@
             if(ext == 'png' || ext == 'gif')
             {
                 // image stuff (just display the image, no need for a fancy graphic!)
-                finalHTML += `<div class="file-img"> <img src="${file.download_url}" width="200" height="200" onclick="downloadFile('${file.download_url}')"> </div>`;
+                finalHTML += `<div class="file-img"> <img src="${file.download_url}" width="200" height="200"> </div>`;
             }
             else
             {
                 // we love automation and logic woopwoop
                 console.log(`goofy ahh ${ext} detected!`);
-                finalHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/${ext}.png" width="150" height="200" onclick="downloadFile('${file.download_url}')"> </div>`;
+                finalHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/${ext}.png" width="150" height="200"> </div>`;
             }
+
+            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/download.png" width="50" height="50" onclick="downloadFile('${file.download_url}')"> </div>`;
 
             finalHTML += `<div class="file-label" style="font-size: 20px;"> ${file.name} </div>`;
 
