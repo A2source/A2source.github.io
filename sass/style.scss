@@ -16,10 +16,6 @@ body {
 
   cursor: default;
 
-  link {
-    text-decoration: none;
-  }
-
 }
 
 h1 { 
@@ -197,4 +193,40 @@ audio {
 ::-webkit-scrollbar-thumb {
   background: rgb(92, 92, 92);
   border-radius: 5px;
+}
+
+/* download schtuff */
+.wrapper-file {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.file {
+  position: relative;
+  text-align: center;
+}
+
+.file-img,
+.file-img-icon  {
+  cursor: pointer;
+  margin: 5px;
+  text-align: center;
+}
+
+.file-img > img {
+  object-fit: cover;
+  padding: 0px;
+  border-radius: 15px;
+}
+
+.file-img-icon > img {
+  padding: 0px;
+  object-fit: contain;
+}
+
+.file-label {
+  white-space: nowrap;
+  margin: 0 auto;
+  text-align: center;
 }

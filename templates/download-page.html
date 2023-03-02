@@ -7,7 +7,7 @@
   {{ page.title }}
 </h1>
 
-<div id="a2Download">
+<div id="a2-download">
     <script>
         function downloadFile(url) 
         {
@@ -44,7 +44,7 @@
     // oh my god guys ascii / html codes for special characters are kicking my ass !!!
     var url = "https://api.github.com/repos/A2source/A2archive/contents/{{ directory }}".replace('&#x2F;', '/');
 
-    var wrapper = document.getElementById("a2Download");
+    var wrapper = document.getElementById("a2-download");
     var finalHTML = '<div class="wrapper-file">';
 
     fetch(url)
@@ -54,11 +54,13 @@
         var files = data.filter(item => item.type == "file");
         var folders = data.filter(item => item.type == "dir");
 
-        console.log(`NUMBER OF FILES FOUND: ${files.length}`)
+        console.log(`NUMBER OF FILES FOUND: ${files.length}`);
 
         // for each file in the found directory...
         for (var i = 0; i < files.length; i++)
         {
+            finalHTML += '<div clas="file">'
+
          //   finalHTML += '<p class="fileData">' + files[i].name + '</p>';
             var file = files[i];
 
@@ -68,20 +70,24 @@
             if(ext == 'png' || ext == 'gif')
             {
                 // image stuff (just display the image, no need for a fancy graphic!)
-                finalHTML += `<a class="fileDownload"> <img src="${file.download_url}" width="200" height="200" onclick="downloadFile('${file.download_url}')"> </a>`;
+                finalHTML += `<div class="file-img"> <img src="${file.download_url}" width="200" height="200" onclick="downloadFile('${file.download_url}')"> </div>`;
             }
             else
             {
                 // we love automation and logic woopwoop
                 console.log(`goofy ahh ${ext} detected!`);
-                finalHTML += `<a class="fileDownload"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/${ext}.png" width="200" height="200" onclick="downloadFile('${file.download_url}')"> </a>`;
+                finalHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/${ext}.png" width="150" height="200" onclick="downloadFile('${file.download_url}')"> </div>`;
             }
+
+            finalHTML += `<div class="file-label" style="font-size: 20px;"> ${file.name} </div>`;
+
+            finalHTML += '</div>';
         }
 
         // same thing for folder, just storing its path instead
         for (var i = 0; i < folders.length; i++)
         {
-            finalHTML += `<p class="folderData"> ${folders[i].html_url} </p><br/><br/>`;
+            finalHTML += `<p class="folderData" style="font-size: 5px;"> ${folders[i].html_url} </p><br/><br/>`;
         }
 
         finalHTML += '</div>';
