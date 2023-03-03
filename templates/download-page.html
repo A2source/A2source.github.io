@@ -56,6 +56,23 @@
 
         console.log(`NUMBER OF FILES FOUND: ${files.length}`);
 
+        // add folders first because it looks nicer
+        for (var i = 0; i < folders.length; i++)
+        {
+            var file = folders[i];
+
+            finalHTML += '<div clas="file">'
+
+            finalHTML += `<div class="file-folder"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/folder-temp.png" width="150" height="200"> </div>`;
+            finalHTML += `<div class="file-label" style="font-size: 20px;"> ${folder.name} </div>`;
+
+            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${folder.download_url}')"> </div>`;
+            finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${folder.html_url}')"> </div>`;
+
+
+            finalHTML += '</div>';
+        }
+
         // for each file in the found directory...
         for (var i = 0; i < files.length; i++)
         {
@@ -85,12 +102,6 @@
             finalHTML += `<div class="file-label" style="font-size: 20px;"> ${file.name} </div>`;
 
             finalHTML += '</div>';
-        }
-
-        // same thing for folder, just storing its path instead
-        for (var i = 0; i < folders.length; i++)
-        {
-            finalHTML += `<p class="folderData" style="font-size: 5px;"> ${folders[i].html_url} </p><br/><br/>`;
         }
 
         finalHTML += '</div>';
