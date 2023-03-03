@@ -79,7 +79,8 @@
                 finalHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/${ext}.png" width="150" height="200"> </div>`;
             }
 
-            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/download.png" width="50" height="50" onclick="downloadFile('${file.download_url}')"> </div>`;
+            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${file.download_url}')"> </div>`;
+            finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${file.html_url}')"> </div>`;
 
             finalHTML += `<div class="file-label" style="font-size: 20px;"> ${file.name} </div>`;
 

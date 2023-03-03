@@ -198,8 +198,7 @@ audio {
 /* download schtuff */
 .wrapper-file {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
   margin: 0px;
 }
 
@@ -210,8 +209,9 @@ audio {
 
 .file-img,
 .file-img-icon  {
-  margin: 5px;
   text-align: center;
+  margin: 5px;
+  padding: 5 auto;
   width: 200;
   height: 200;
 }
@@ -228,20 +228,32 @@ audio {
 }
 
 .file-label {
-  white-space: nowrap;
-  margin: 5 auto;
   text-align: center;
+  margin: 5 auto;
 }
 
 .file-download {
   position: absolute;
-  text-align: center;
   cursor: pointer;
+
+  transform: translate(6em, -3.2em);
+
+  > img {
+    padding: 0;
+  }
 }
 
-.file-download > img {
-  position: relative;
-  left: 170px;
-  bottom: 80px;
-  padding: 0px;
+.file-spy {
+  position: absolute;
+  cursor: pointer;
+
+  transform: translate(0, -3.2em);
+
+  > img {
+    padding: 0;
+  }
+
+  > a {
+    position: absolute;
+  }
 }
