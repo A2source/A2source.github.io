@@ -9,12 +9,18 @@
   100% { top: 0px; }
 }
 
+html {
+  padding-top: 3em;
+}
+
 body {
   font-family: 'Balsamiq Sans', cursive;
   color: #E8E6E3;
   background: linear-gradient(90deg, #181A1B 0%, #1A1C1D 3%, #1A1C1D 97%, #181A1B 100%);
 
   cursor: default;
+
+  overflow: none;
 
 }
 
@@ -142,36 +148,6 @@ a:active {
   opacity: 25%;
 }
 
-nav {
-
-  text-align: center;
-
-  li { display: inline; }
-  p { 
-    display: inline; 
-    color: gray;
-  }
-
-  ul {
-    margin: 25px;
-    padding: 10px 0px 15px;
-    list-style: none;
-  }
-
-  a {
-    padding: 6px 6px 15px;
-    text-decoration: none;
-  }
-
-  a:link { color: yellow; }
-  a:visited { color: yellow; }
-  a:hover { color: darkmagenta; }
-  a:active { color: magenta; }
-
-  background: linear-gradient(90deg, #1A1C1D 0%, #272626 30%, #272626 70%, #1A1C1D 100%);
-
-}
-
 img {
   padding-left: 75px;
 }
@@ -208,7 +184,8 @@ audio {
 }
 
 .file-img,
-.file-img-icon  {
+.file-img-icon,
+.file-folder  {
   text-align: center;
   margin: 5px;
   padding: 5 auto;
@@ -222,7 +199,8 @@ audio {
   border-radius: 15px;
 }
 
-.file-img-icon > img {
+.file-img-icon > img,
+.file-folder > img {
   padding: 0px;
   object-fit: contain;
 }
@@ -256,4 +234,70 @@ audio {
   > a {
     position: absolute;
   }
+}
+
+
+// NAV STUFF
+.nav-bar {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+
+  text-align: center;
+
+  li { display: inline; }
+  p { 
+    display: inline; 
+    color: gray;
+  }
+
+  ul {
+    margin: 25px;
+    padding: 10px 0px 15px;
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+   // transform: translate(0%, -.75em)
+  }
+
+  a:link { color: yellow; }
+  a:visited { color: yellow; }
+  a:hover { color: darkmagenta; }
+  a:active { color: magenta; }
+
+  background: linear-gradient(90deg, #1A1C1D 0%, #272626 30%, #272626 70%, #1A1C1D 100%);
+  background-attachment: scroll;
+
+  width: 100%;
+  height: 1.65em;
+
+  left: 50%;
+  transform: translate(-51%, -175%);
+
+  box-shadow: 5px 0px 5px 5px rgb(0, 0, 0, 0.5);
+
+}
+
+.nav-tab { 
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  padding-top: 0.25em;
+}
+
+// if you zoom in a LOT, makes nav bar look nicer
+@media only screen and (max-width: 700px){
+  .nav-tab > i { 
+    display: none
+  }
+}
+
+.nav-tab:not(.nav-first) {
+    border-left: 5px;
+    border-style: none none none solid;
+    border-width: 2px;
+    border-color: rgba(70, 70, 70, 50%);
 }
