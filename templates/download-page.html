@@ -63,11 +63,11 @@
 
             finalHTML += '<div clas="file">'
 
-            finalHTML += `<div class="file-folder"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/folder-temp.png" width="150" height="200"> </div>`;
+            finalHTML += `<div class="file-folder"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.ioe/main/content/download/icons/folder-temp.png" width="150" height="200"> </div>`;
             finalHTML += `<div class="file-label" style="font-size: 20px;"> ${folder.name} </div>`;
 
-            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${folder.download_url}')"> </div>`;
-            finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${folder.html_url}')"> </div>`;
+            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${folder.download_url}')"> </div>`;
+            finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${folder.html_url}')"> </div>`;
 
 
             finalHTML += '</div>';
@@ -93,11 +93,11 @@
             {
                 // we love automation and logic woopwoop
                 console.log(`goofy ahh ${ext} detected!`);
-                finalHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/${ext}.png" width="150" height="200"> </div>`;
+                finalHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/${ext}.png" width="150" height="200"> </div>`;
             }
 
-            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${file.download_url}')"> </div>`;
-            finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/A2site/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${file.html_url}')"> </div>`;
+            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${file.download_url}')"> </div>`;
+            finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${file.html_url}')"> </div>`;
 
             finalHTML += `<div class="file-label" style="font-size: 20px;"> ${file.name} </div>`;
 
