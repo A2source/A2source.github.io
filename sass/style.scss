@@ -4,9 +4,9 @@
 
 /* animations yo */
 @keyframes hover {
-  0% { top: 0px; } 
-  50% { top: 7px; }
-  100% { top: 0px; }
+  0% { top: 12px; } 
+  50% { top: 18px; }
+  100% { top: 12px; }
 }
 
 html {
@@ -79,7 +79,6 @@ div {
 
 blockquote { 
   
-
   font-size: 25px; 
   font-style: normal; 
   font-variant: lighter; 
@@ -274,8 +273,8 @@ audio {
   width: 100%;
   height: 1.65em;
 
-  left: 50%;
-  transform: translate(-51%, -175%);
+  left: 48.6%;
+  transform: translate(-50%, -175%);
 
   box-shadow: 5px 0px 5px 5px rgba(0, 0, 0, 0.5);
 
