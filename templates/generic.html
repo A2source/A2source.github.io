@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="div" id="main-body"> {{ page.content | safe }} </div>
+
+    <script>
+        // get the main body stuff
+        var a = document.getElementById('main-body');
+
+        // if a hyperlink is inside of the main body, set it to target self (don't open href in new tab)
+        for(const child of a.children[0].children) if(child.tagName === 'A') child.setAttribute('target', '_self');
+        
+    </script>
+
+{% endblock content %}

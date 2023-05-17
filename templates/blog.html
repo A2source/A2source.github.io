@@ -61,7 +61,7 @@
 </div>
 
 {% for page in section.pages %}
-  <script type="module">
+  <script>
     var p = document.createElement('p');
     p.innerHTML = `<a href="{{ page.permalink | safe }}" target="_self" > {{ page.title }} - ${formatDate('{{ page.date }}')} </a>`
     document.getElementById('main-blog').appendChild(p)
