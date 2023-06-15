@@ -37,12 +37,16 @@ If any of you online have actually read this, thanks. I want to write more blog 
    \
    
 The channel recently hit 6k subs, which is pretty crazy to me. In maybe a week after we already hit 6.1k, so growth is steady and people like the videos, which is nice. \
+
 Sorry for a lack of music on the channel, it's mostly been wrath stuff lmao. I want to get back into posting remixed stuff again, and i'm thinking the next video will be Internet Speed v2, but idk. \
 
 I haven't posted in a week so we'll see. \
  \
+ (It's actually been two weeks. Goddamn I need to stop re-reading this and just leave it.) \
+ 
  
 I think I'm about ready to post this now. I'll probably come back in and edit it this, to fix formatting (I already am, hi past me! It actually looks good!) and whatever but. Yea. For a first serious blog post, this is alright. \
+
 Writing this has actually been a very interesting experience. Writing has always been fun to me, but I never really liked sitting down and writing stories. (Even though I love making / expanding fictional worlds of my own design in my head. That's quite easy for me!). \
 
 I feel like I need to make something SUPER cohesive and deep, or else it won't work well or I won't be happy. \
