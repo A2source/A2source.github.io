@@ -32,11 +32,9 @@ I think I'm done talking about remixed now, and the github file editor is kinda 
 If any of you online have actually read this, thanks. I want to write more blog posts but I should to develop this '[A2] blog system' first before I start going ham. \
  \
  
- <br>
  I just figured out how to make the editor chill out so I think I'll write a bit more.
   \
    \
-   <br>
    
 The channel recently hit 6k subs, which is pretty crazy to me. In maybe a week after we already hit 6.1k, so growth is steady and people like the videos, which is nice. \
 Sorry for a lack of music on the channel, it's mostly been wrath stuff lmao. I want to get back into posting remixed stuff again, and i'm thinking the next video will be Internet Speed v2, but idk. \
