@@ -24,7 +24,7 @@ I guess I'll update on what it's looking like here. There are currently a line u
 
 I am very excited to do that, though. I finished Internet Speed v2 months ago, and I'm currently working on Revenge v2. Crumbling World got a bit of a remaster, but that's about all the progress that's been done that hasn't been scrapped because of the bans. \
 
-Speaking of those, there wasn't much progress there to begin with either. Probably ~7 songs fully complete, and a few uploaded. Remixed progress has beena  slow slog, but it is going somewhere, and I really do want to finish it. \
+Speaking of those, there wasn't much progress there to begin with either. Probably ~7 songs fully complete, and a few uploaded. Remixed progress has been a  slow slog, but it is going somewhere, and I really do want to finish it. \
  \
  
 I think I'm done talking about remixed now, and the github file editor is kinda going crazy jumping around rn, so writing is kind of annoying lmao. I wanna write a system that lets me make blogposts easier, like auto-formatting titles and dates, a better UI for writing into, all that technical stuff. \
@@ -32,21 +32,26 @@ I think I'm done talking about remixed now, and the github file editor is kinda 
 If any of you online have actually read this, thanks. I want to write more blog posts but I should to develop this '[A2] blog system' first before I start going ham. \
  \
  
+ <br>
  I just figured out how to make the editor chill out so I think I'll write a bit more.
   \
    \
+   <br>
    
 The channel recently hit 6k subs, which is pretty crazy to me. In maybe a week after we already hit 6.1k, so growth is steady and people like the videos, which is nice. \
 Sorry for a lack of music on the channel, it's mostly been wrath stuff lmao. I want to get back into posting remixed stuff again, and i'm thinking the next video will be Internet Speed v2, but idk. \
+
 I haven't posted in a week so we'll see. \
  \
  
-I think I'm about ready to post this now. I'll probably come back in and edit it this, to fix formatting and whatever but. Yea. For a first serious blog post, this is alright. \
-Writing this has actually been a very interesting experience. Writing has always been fun to me, but I never really liked sitting down and writing stories. (Even though I love making / expanding fictional worlds of my own design in my head. That's quite easy for me!). \ 
+I think I'm about ready to post this now. I'll probably come back in and edit it this, to fix formatting (I already am, hi past me! It actually looks good!) and whatever but. Yea. For a first serious blog post, this is alright. \
+Writing this has actually been a very interesting experience. Writing has always been fun to me, but I never really liked sitting down and writing stories. (Even though I love making / expanding fictional worlds of my own design in my head. That's quite easy for me!). \
+
 I feel like I need to make something SUPER cohesive and deep, or else it won't work well or I won't be happy. \
-Writing this blog post has been like that, but without the bad parts. I don/t have to worry about a cohesive story with no holes. I don't need to be concerned with character developments or story structures. I just write. \
-And I know I'm gonna re-read this entire post a bunch of times after I post it. That's fun for me, too. Going back and reading what I wrote. \
- \
+
+Writing this blog post has been like that, but without the bad parts. I don't have to worry about a cohesive story with no holes. I don't need to be concerned with character developments or story structures. I just write. \
+
+I know I'm gonna re-read this entire post a bunch of times after I post it. That's fun for me, too. Going back and reading what I wrote. \
 
 That being said, I think i'm going to write blog posts more often. There won't be a single serious "schedule" or anything, but I want to post when I feel like it, when I never did before. Until now. \
  \
