@@ -62,9 +62,13 @@
 
 {% for page in section.pages %}
   <script>
-    var p = document.createElement('p');
-    p.innerHTML = `<a href="{{ page.permalink | safe }}" target="_self" > {{ page.title }} - ${formatDate('{{ page.date }}')} </a>`
-    document.getElementById('main-blog').appendChild(p)
+    var postBox = document.createElement('div');
+
+    postBox.setAttribute('class', 'post-box');
+
+    postBox.innerHTML = `<a href="{{ page.permalink | safe }}" target="_self"> {{ page.title }} </a> <br> <section style="padding-top: 0.6em; padding-bottom: 0.6em;"> ${formatDate('{{ page.date }}')} </section>`;
+
+    document.getElementById('main-blog').appendChild(postBox);
   </script>
 {% endfor %}
 

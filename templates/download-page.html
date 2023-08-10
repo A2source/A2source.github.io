@@ -3,13 +3,15 @@
 
 {% block content %}
 
-<h1 class="title">
-  {{ page.title }}
+<h1 class="title" id="download-title">
+    <a target="_self" id="download-main-title"> {{ page.title }} </a>
 </h1>
 
 <div id="a2-download">
-    <script>
-        function downloadFile(url) 
+    <script type="module">
+        import { downloadZip } from "https://cdn.jsdelivr.net/npm/client-zip/index.js";
+
+        async function downloadFile(url)
         {
             var xhr = new XMLHttpRequest();
 
@@ -28,10 +30,143 @@
                     a.download = url.substring(url.lastIndexOf('/')+1);
                     document.body.appendChild(a);
                     a.click();
+
+                    URL.revokeObjectURL(blob);
                 }
             };
             xhr.send();
         }
+
+        window.downloadFile = downloadFile;
+
+        async function initDownloadFolder(url, name)
+        {
+            
+            var split = url.split(',');
+
+            var realURL = split[0];
+            var realName = split[1].substring(1);
+
+            fetch(realURL)
+            .then(response => response.json())
+            .then(data => {
+
+                var files = data.filter(item => item.type == "file");
+                var folders = data.filter(item => item.type == "dir");
+
+                console.log(`NUMBER OF FILES FOUND: ${files.length}`);
+                console.log(`NUMBER OF FOLDERS FOUND: ${folders.length}`);
+
+                var isFLP = false;
+
+                for (var i = 0; i < files.length; i++)
+                {
+                    var file = files[i];
+                    if (!isFLP && file.name == 'flp.txt') isFLP = true;
+                }
+
+                downloadFolder(realURL, realName, folders, folders.length, files, files.length, isFLP);
+            })
+            .catch(error => console.error(error));
+        }
+
+        window.initDownloadFolder = initDownloadFolder;
+
+        var downloadFileCount;
+        var downloadFolderCount;
+        var downloadingFLP;
+
+        var dotsTimer;
+
+        async function *lazyFetch(allFiles) {
+            
+            var dotsWaiting = setTimeout(startDotsTimer(), 1000);
+
+            for (var i = 0; i < allFiles.length; i++)
+            {
+                var file = allFiles[i];
+
+                if (file[0] != 'flp.txt')
+                {
+                    clearTimeout(dotsWaiting);
+                    window.clearInterval(dotsTimer);
+
+                    document.getElementById("download-indic").innerHTML = `Zipping '${file[0]}' (${i + 1} / ${(downloadFileCount + downloadFolderCount) - (downloadingFLP ? 1 : 0)}) `;
+
+                    dotsWaiting = setTimeout(startDotsTimer(), 1000);
+                    
+                    yield await fetch(file[1]);
+                }
+            }
+        }
+
+        async function downloadFolder(url, name, folders, numFolders, files, numFiles, isFLP) 
+        {
+            downloadFileCount = numFiles;
+            downloadFolderCount = numFolders;
+            downloadingFLP = isFLP;
+
+            var realURL = url.split(',')[0];
+
+            console.log(`DOWNLOADING FROM ${realURL}`);
+            console.log(`INTO ${name}`);
+            console.log(`FOR ${numFiles} FILES`);
+
+            var zipFiles = [];
+            for (var i = 0; i < numFiles; i++) zipFiles.push([files[i].name, files[i].download_url]);
+            
+            document.getElementById('download-indic').style.visibility = 'visible';
+            document.getElementById('download-indic').style.opacity = 1;
+            
+            // get the ZIP stream in a Blob
+            const blob = await downloadZip(lazyFetch(zipFiles)).blob();
+
+            // make and click a temporary link to download the Blob
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = name;
+            link.click();
+            link.remove();
+
+            URL.revokeObjectURL(blob);
+
+            console.log('downloaded buddy.');
+            document.getElementById("download-indic").innerHTML = `DOWNLOADED!`;
+
+            fadeOutText();
+        }
+
+        // https://stackoverflow.com/questions/25682379/fade-in-element-by-setting-opacity-with-javascript
+        function fadeOutText(){
+            var increment = 0.045;
+            var opacity = 1;
+
+            var instance = window.setInterval(function() {
+
+                document.getElementById('download-indic').style.opacity = opacity
+                opacity = opacity - increment;
+
+                if(opacity > 1){
+                    window.clearInterval(instance);
+
+                    document.getElementById('download-indic').style.visibility = 'hidden';
+                }
+            }, 100)
+        }
+
+        function startDotsTimer()
+        {
+            var count = 0;
+            dotsTimer = setInterval(function() {
+                count++;
+                var dots = new Array(count % 3).join('.');
+                document.getElementById("download-indic").innerHTML += dots;
+
+                if (document.getElementById("download-indic").innerHTML.endsWith('....')) document.getElementById("download-indic").innerHTML = document.getElementById("download-indic").innerHTML.slice(0, -4);
+            }, 500);
+        }
+
+        window.downloadFolder = downloadFolder;
    </script>
 </div>
 
@@ -41,77 +176,206 @@
 <!-- DUDE chatgpt coming in clutch what the hell (I learned that I can use the github api and javascript. cool stuff!) -->
 <script>
 
-    // oh my god guys ascii / html codes for special characters are kicking my ass !!!
-    var url = "https://api.github.com/repos/A2source/A2archive/contents/{{ directory }}".replace('&#x2F;', '/');
+    var folderList = [];
+    var flpList = [];
 
-    var wrapper = document.getElementById("a2-download");
-    var finalHTML = '<div class="wrapper-file">';
+    async function fetchFolders(url)
+    {
+        await fetch(url)
+        .then(response => response.json())
+        .then(data => {
 
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
+            var folders = data.filter(item => item.type == "dir");
+            console.log(`NUMBER OF FOLDERS FOUND: ${folders.length}`);
 
-        var files = data.filter(item => item.type == "file");
-        var folders = data.filter(item => item.type == "dir");
-
-        console.log(`NUMBER OF FILES FOUND: ${files.length}`);
-
-        // add folders first because it looks nicer
-        for (var i = 0; i < folders.length; i++)
-        {
-            var folder = folders[i];
-
-            finalHTML += '<div clas="file">'
-
-            finalHTML += `<div class="file-folder"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/folder-temp.png" width="150" height="200"> </div>`;
-            finalHTML += `<div class="file-label" style="font-size: 20px;"> ${folder.name} </div>`;
-
-            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${folder.download_url}')"> </div>`;
-            finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${folder.html_url}')"> </div>`;
-
-
-            finalHTML += '</div>';
-        }
-
-        // for each file in the found directory...
-        for (var i = 0; i < files.length; i++)
-        {
-            finalHTML += '<div clas="file">'
-
-         //   finalHTML += '<p class="fileData">' + files[i].name + '</p>';
-            var file = files[i];
-
-            // grab file extension (no need for copy/paste code! ya idiot!)
-            var ext = file.name.split('.')[1];
-
-            if(ext == 'png' || ext == 'gif')
+            // add folders first because it looks nicer
+            for (var i = 0; i < folders.length; i++)
             {
-                // image stuff (just display the image, no need for a fancy graphic!)
-                finalHTML += `<div class="file-img"> <img src="${file.download_url}" width="200" height="200"> </div>`;
-            }
-            else
-            {
-                // we love automation and logic woopwoop
-                console.log(`goofy ahh ${ext} detected!`);
-                finalHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/${ext}.png" width="150" height="200"> </div>`;
+                var folder = folders[i];
+
+                var isFLP = folder.name.endsWith(' FLP');
+                var folderFiles = folders[i];
+
+                var folderHTML = '<div clas="file">'; 
+                if (!isFLP)
+                {
+                    folderHTML += `<div class="file-folder"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/folder-temp.png" width="150" height="200" onClick="loadSubFolder('${folder.name}')"> </div>`;
+                }
+                else
+                {
+                    console.log(`SETTING UP FLP (${folder.name})`);
+
+                    folderHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/zip.png" width="150" height="200"> </div>`;
+
+                    folderHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/download.png" width="55" height="55" title="Download Folder" onclick="initDownloadFolder('${folder.url}, ${folder.name}')"> </div>`;
+                }
+
+                folderHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${folder.html_url}')"> </div>`;
+
+                folderHTML += `<div class="file-label" style="font-size: 20px;"> ${folder.name} </div>`;
+                folderHTML += '</div>';
+
+                if (isFLP) 
+                    flpList.push(folderHTML);
+
+                else
+                    folderList.push(folderHTML);
+
+                console.log(`FINISHED FETCHING FOLDER ${i}`);
             }
 
-            finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${file.download_url}')"> </div>`;
-            finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${file.html_url}')"> </div>`;
-
-            finalHTML += `<div class="file-label" style="font-size: 20px;"> ${file.name} </div>`;
-
-            finalHTML += '</div>';
-        }
-
-        finalHTML += '</div>';
-
-        wrapper.innerHTML += finalHTML;
-
+            folderList.forEach(function(html, i) { finalHTML += html; });
+            flpList.forEach(function(html, i) { finalHTML += html; });
         })
-    .catch(error => console.error(error));
+        .catch(error => console.error(error));
+        
+    }
+
+    async function fetchFiles(url)
+    {
+        console.log('folders done, files now');
+        
+        await fetch(url)
+        .then(response => response.json())
+        .then(data => {
+
+            var files = data.filter(item => item.type == "file");
+
+            console.log(`NUMBER OF FILES FOUND: ${files.length}`);
+
+            // for each file in the found directory...
+            for (var i = 0; i < files.length; i++)
+            {
+                finalHTML += '<div clas="file">'
+
+            //   finalHTML += '<p class="fileData">' + files[i].name + '</p>';
+                var file = files[i];
+
+                // grab file extension (no need for copy/paste code! ya idiot!)
+                var ext = file.name.split('.')[1];
+
+                if(ext == 'png' || ext == 'gif')
+                {
+                    // image stuff (just display the image, no need for a fancy graphic!)
+                    finalHTML += `<div class="file-img"> <img src="${file.download_url}" width="200" height="200"> </div>`;
+                }
+                else
+                {
+                    // we love automation and logic woopwoop
+                    finalHTML += `<div class="file-img-icon"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/${ext}.png" width="150" height="200"> </div>`;
+                }
+
+                console.log(`goofy ahh ${ext} detected!`);
+
+                finalHTML += `<div class="file-download"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/download.png" width="55" height="55" title="Download File" onclick="downloadFile('${file.download_url}')"> </div>`;
+                finalHTML += `<div class="file-spy"> <img src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/download/icons/glass.png" width="35" height="35" title="View File Source" onclick="window.open('${file.html_url}')"> </div>`;
+
+                finalHTML += `<div class="file-label" style="font-size: 20px;"> ${file.name} </div>`;
+
+                finalHTML += '</div>';
+            }
+        })
+        .catch(error => console.error(error));
+    }
+
+    function loadSubFolder(name)
+    {
+        const params = new URLSearchParams(window.location.search);
+        console.log(params.toString());
+
+        if (params.toString() == null || params.toString() == '')
+            history.pushState(null, null, "?folder=");
+        
+        else
+            history.pushState(null, null, "?" + params.toString());
+
+        params.set('folder', params.get('folder') + (params.get('folder').endsWith('%2F') ? '' : '/') + name);
+
+        history.pushState(null, null, "?" + params.toString());
+
+        location.reload();
+    }
+
+    var finalHTML = '<div class="wrapper-file">';
+    var curURL;
+
+    async function loadFiles(url)
+    {
+        var rawURL = location.protocol + '//' + location.host + location.pathname;
+
+        var title = document.getElementById('download-title');
+
+        var mainTitle = document.getElementById("download-main-title");
+        mainTitle.href = rawURL;
+
+        if (params.get('folder') != null)
+        {
+            var folderTitles = params.get('folder').split('/');
+
+            console.log(folderTitles);
+
+            var paramString = '?folder=';
+
+            for (var i = 0; i < folderTitles.length; i++)
+            {
+                if (folderTitles[i] != '')
+                {
+                    folderTitles[i] = folderTitles[i].replace('/', '');
+
+                    paramString = paramString + '%2F' + folderTitles[i];
+                    console.log(`CUR PARAM STRING ${paramString}`);
+
+                    title.innerHTML += '<span style="font-size: 30px; text-decoration: none; color: gray"> / </span>'
+                    title.innerHTML += `<a href="${rawURL + paramString}" style="font-size: 30px;" target="_self" id="folder-title"> ${folderTitles[i]} </a>`;
+                }
+            }
+        }
+
+        var finalURL = url;
+        if (params.get('folder') != null)
+            finalURL += params.get('folder');
+
+        var wrapper = document.getElementById("a2-download");
+
+        console.log('--------------------\nLOADING NEW FILESET');
+        console.log(`FETCHING FROM URL ${finalURL}`);
+
+        (async() => {
+
+            await fetchFolders(finalURL)
+            .then(() => {
+                fetchFiles(finalURL)
+                .then(() => {
+
+                    finalHTML += '</div>';
+                    wrapper.innerHTML += finalHTML;
+
+                    console.log('SHOULD BE FINISHING UP NOW!');
+                })
+            });
+
+        })();
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    console.log(params.toString());
+
+    if (params.toString() == null || params.toString() == '')
+        history.pushState(null, null, "?folder=");
+    
+    else
+        history.pushState(null, null, "?" + params.toString());
+
+    // oh my god guys ascii / html codes for special characters are kicking my ass !!!
+    curURL = "https://api.github.com/repos/A2source/A2archive/contents/{{ directory }}".replace('&#x2F;', '/');
+    loadFiles(curURL);
+
 </script>
 
 {{ page.content | safe }}
+
+<div id="download-indic" class="download-indic">
+
+</div>
 
 {% endblock content %}
