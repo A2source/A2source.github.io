@@ -2,35 +2,57 @@
 
 {% block content %}
 
-<div class="div">
+<div class="div" id="main-div">
+  <div class="main-page-content">
 
-  <h1 class="title" style="text-align: center;">
-    Welcome to A2Site!
-  </h1>
+    <h1 class="title">
+      Welcome to [A2] Site!
+    </h1>
 
-  <p>
-    Hi! Welcome to <a href = "https://youtube.com/@A2music">[A2]'s</a> website! here you can see all of the projects I am currently working on, alongside teasers and other snippets of my work!
-  </p>
-  <p>
-    In the future, this page will include exclusive updates on my current projects, upcoming projects, and concepts.
-  </p>
-  <p>
-    I also plan on including a downloads section for FLPs, Music Files, and other media related to my projects.
-  </p>
+    <!-- hello -->
+    <p>
+      Hello! I'm [A2], a music producer / programmer / aspiring artist! I've been making music for ~5 years, and programming actively for ~2.
+    </p>
 
-  <a href="https://www.youtube.com/watch?v=_Q7J97WD3Gg" title="Test for img href! (click me!)"><img src="https://raw.githubusercontent.com/A2source/A2site/main/content/img/spookeez.gif" style="width:200px; height:220px; padding-top: 25px;"></a>
-  <br>
+    <p>
+      Click the links below to see some examples of my work!
+    </p>
 
-  <audio controls>
-    <source src="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/snd/teaser.wav" type="audio/wav">
-  </audio>
+    <div class="landing-links">
 
-  <p>
-    <em> Testing Italics... </em>
-  </p>
-  <p>
-    <b> Bold text also... </b>
-  </p>
+      <span class="landing-yt">
+        <a href="https://youtube.com/@A2music" target="_blank">
+          <i class="fa-brands fa-youtube"></i> YouTube
+        </a>
+      </span>
+
+      &#8226
+
+      <span class="landing-bandcamp">
+        <a href="https://a2345.bandcamp.com" target="_blank">
+          <i class="fa-brands fa-bandcamp"></i> Bandcamp
+        </a>
+      </span>
+
+      &#8226
+
+      <span class="landing-git">
+        <a  href="https://github.com/A2source" target="_blank">
+          <i class="fa-brands fa-github"></i> Github
+        </a>
+      </span>
+
+    </div>
+
+    <p>
+      <a href="https://www.youtube.com/playlist?list=PLzE10lTQw1HJo2AZ8-iwAmmcWAfYP6rV0"> A collection of every song I've ever made / worked on </a>
+    </p>
+
+    <p>
+      <a href="https://www.youtube.com/playlist?list=PLzE10lTQw1HKzGacKyGoinV4kAgzy4E4E"> My Best Music </a>
+    </p>
+
+  </div>
 </div>
 
 {% endblock content %}

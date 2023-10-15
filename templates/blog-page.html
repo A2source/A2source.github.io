@@ -63,8 +63,10 @@
 
   </script>
 
-<div class="div"> 
-  {{ page.content | safe }}
+<div class="div" id="main-div"> 
+  <div class="main-page-content">
+    {{ page.content | safe }}
+  </div>
 </div>
 
 {% endblock content %}
