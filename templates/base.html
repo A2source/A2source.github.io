@@ -1,66 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% set css = load_data(path="public/style.css") %}
-<style>
-  {{css | safe}}
+  <!-- embed metadata stuff -->
+  <meta content="[A2] Site" property="og:title" />
+  <meta content="[A2]'s Website \n YouTube: @A2music" property="og:description" />
+  <meta content="{{ current_url }};" property="og:url" />
+  <meta content="https://raw.githubusercontent.com/A2source/A2archive/main/embed-idle.gif" property="og:image" />
 
-  .div {
-    border: 5px;
-    border-style: none none none dashed;
-    border-color: #867D6E;
-    background-color: #161819;
-    transform: scale(0.95, 1);
-    padding-bottom: 25px;
-  }
+  {% set css = load_data(path="public/style.css") %}
+  <style>
+    {{css | safe}}
 
-  .wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-  }
+    .div {
+      border: 5px;
+      border-style: none none none dashed;
+      border-color: #867D6E;
+      background-color: #161819;
+      transform: scale(0.95, 1);
+      padding-bottom: 25px;
+    }
 
-</style>
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
 
-<head>
-  <meta charset="utf-8">
-  <title>[A2] Site</title>
-  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/img/favicon.ico">
-  <script src="https://kit.fontawesome.com/807649a97a.js" crossorigin="anonymous"></script>
+  </style>
 
-  <!-- this is amazing right here -->
-  <base target="_blank">
+  <head>
+    <meta charset="utf-8">
+    <title>[A2] Site</title>
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/img/favicon.ico">
+    <script src="https://kit.fontawesome.com/807649a97a.js" crossorigin="anonymous"></script>
 
-</head>
+    <!-- this is amazing right here -->
+    <base target="_blank">
 
-<nav class="container">
-  <div class="nav-bar">
-    <a class="nav-tab nav-first" href="/about" target="_self">
-      <i class="fa-solid fa-circle-info"></i> About
-    </a>
-    <a class="nav-tab" href="/" target="_self">
-      <i class="fa-solid fa-house"></i> Home
-    </a>
-    <a class="nav-tab" href="/blog" target="_self">
-      <i class="fa-solid fa-gears"></i> Projects
-    </a>
-    <a class="nav-tab" href="/blog" target="_self">
-      <i class="fa-solid fa-list-ul"></i> Posts
-    </a>
-  </div>
-</nav>
+  </head>
 
-<body>
-  <section class="section">
-    <div class="container">
-      {% block content %} {% endblock %}
+  <nav class="container">
+    <div class="nav-bar">
+      <a class="nav-tab nav-first" href="/about" target="_self">
+        <i class="fa-solid fa-circle-info"></i> About
+      </a>
+      <a class="nav-tab" href="/" target="_self">
+        <i class="fa-solid fa-house"></i> Home
+      </a>
+      <a class="nav-tab" href="/blog" target="_self">
+        <i class="fa-solid fa-gears"></i> Projects
+      </a>
+      <a class="nav-tab" href="/blog" target="_self">
+        <i class="fa-solid fa-list-ul"></i> Posts
+      </a>
     </div>
-  </section>
-</body>
+  </nav>
 
-<footer >
-  Created using <a href = "https://getzola.org">Zola</a> &#8226 Hosted by <a href = "https://pages.github.com/">Github Pages</a> <br>
-  <p style="font-size: 15px; margin-top: 5px;"> Heavily inspired by <a style="font-size: 10" href = "https://funkin.me">Funkin.me </a> </p>
-</footer>
+  <body>
+    <section class="section">
+      <div class="container">
+        {% block content %} {% endblock %}
+      </div>
+    </section>
+  </body>
+
+  <footer >
+    Created using <a href = "https://getzola.org">Zola</a> &#8226 Hosted by <a href = "https://pages.github.com/">Github Pages</a> <br>
+    <p style="font-size: 15px; margin-top: 5px;"> Heavily inspired by <a style="font-size: 10" href = "https://funkin.me">Funkin.me </a> </p>
+  </footer>
 
 </html>
