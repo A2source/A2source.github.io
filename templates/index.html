@@ -2,57 +2,20 @@
 
 {% block content %}
 
-<div class="div" id="main-div">
-  <div class="main-page-content">
+<div class="window" data-title="Index" data-width="600px" data-col="red">
+  <h1>Test Title</h1>
+  <p>this should be a p element inside of a div</p>
+  <p>this paragraph has a <a href="https://youtube.com/@A2music">link</a> inside of it, simply amazing</p>
+</div>
 
-    <h1 class="title">
-      Welcome to [A2] Site!
-    </h1>
+<div class="window" data-title="LOL" data-y="400px" data-height="115px">
+  <p>hi here's a second window</p>
+</div>
 
-    <!-- hello -->
-    <p>
-      Hello! I'm [A2], a music producer / programmer / aspiring artist! I've been making music for ~5 years, and programming actively for ~2.
-    </p>
-
-    <p>
-      Click the links below to see some examples of my work!
-    </p>
-
-    <div class="landing-links">
-
-      <span class="landing-yt">
-        <a href="https://youtube.com/@A2music" target="_blank">
-          <i class="fa-brands fa-youtube"></i> YouTube
-        </a>
-      </span>
-
-      &#8226
-
-      <span class="landing-bandcamp">
-        <a href="https://a2345.bandcamp.com" target="_blank">
-          <i class="fa-brands fa-bandcamp"></i> Bandcamp
-        </a>
-      </span>
-
-      &#8226
-
-      <span class="landing-git">
-        <a  href="https://github.com/A2source" target="_blank">
-          <i class="fa-brands fa-github"></i> Github
-        </a>
-      </span>
-
-    </div>
-
-    <p>
-      <a href="https://www.youtube.com/playlist?list=PLzE10lTQw1HL0Q1pde-Oys0AI35KvGNgS"> A collection of every song I've ever made / worked on </a>
-    </p>
-
-    <p>
-      <a href="https://www.youtube.com/playlist?list=PLzE10lTQw1HKzGacKyGoinV4kAgzy4E4E"> My Best Music </a>
-    </p>
-
-  </div>
+<div class="window" data-title="Center" data-center="yes" data-height="75%" data-width="300px" data-col="lime">
+  <p>This should be centered.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
 {% endblock content %}

@@ -7,66 +7,26 @@
   <meta content="{{ current_url }};" property="og:url" />
   <meta content="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/img/embed-idle.gif" property="og:image" />
 
-  {% set css = load_data(path="public/style.css") %}
-  <style>
-    {{css | safe}}
-
-    .div {
-      border: 5px;
-      border-style: none none none dashed;
-      border-color: #867D6E;
-      background-color: #161819;
-      transform: scale(0.95, 1);
-      padding-bottom: 25px;
-    }
-
-    .wrapper {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-    }
-
-  </style>
-
   <head>
     <meta charset="utf-8">
-    <title>[A2] Site</title>
+    <title>Welcome</title>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/A2source/a2source.github.io/main/content/img/favicon.ico">
     <script src="https://kit.fontawesome.com/807649a97a.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/window.css"></link>
+    <script src="/script/windows.js"></script>
 
     <!-- this is amazing right here -->
     <base target="_blank">
 
   </head>
 
-  <nav class="container">
-    <div class="nav-bar">
-      <a class="nav-tab nav-first" href="/about" target="_self">
-        <i class="fa-solid fa-circle-info"></i> About
-      </a>
-      <a class="nav-tab" href="/" target="_self">
-        <i class="fa-solid fa-house"></i> Home
-      </a>
-      <a class="nav-tab" href="/blog" target="_self">
-        <i class="fa-solid fa-gears"></i> Projects
-      </a>
-      <a class="nav-tab" href="/blog" target="_self">
-        <i class="fa-solid fa-list-ul"></i> Posts
-      </a>
-    </div>
-  </nav>
-
-  <body>
+  <body style="height: 100%">
     <section class="section">
-      <div class="container">
+      <div id="container" style="height: 100%">
         {% block content %} {% endblock %}
       </div>
     </section>
   </body>
-
-  <footer >
-    Created using <a href = "https://getzola.org">Zola</a> &#8226 Hosted by <a href = "https://pages.github.com/">Github Pages</a> <br>
-    <p style="font-size: 15px; margin-top: 5px;"> Heavily inspired by <a style="font-size: 10" href = "https://funkin.me">Funkin.me </a> </p>
-  </footer>
 
 </html>
