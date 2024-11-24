@@ -1,0 +1,116 @@
+@keyframes scroll { 0% { background-position: -512px -512px; } 100% { background-position: 0px 0px; } }
+@keyframes windowScroll { 0% { background-position: 1024px -512px; } 100% { background-position: 0px 0px; } }
+@keyframes barScroll { 0% { filter: blur(100%); } 100% { filter: blur(0%); } }
+@keyframes link { 0% { transform: skewY(0) } 25% { transform: skewY(10%); } 75% { transform: skewY(-10%); } }
+
+body {
+    overflow: hidden;
+
+    background-image: url('bg.png');
+    background-repeat: both;
+
+    animation: scroll forwards 60s infinite;
+    animation-timing-function: linear;
+
+    font-family:'Courier New', Courier, monospace;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+
+    filter: blur(10%);
+}
+
+a:after {
+    width: 100%;
+    filter: blur(10%);
+}
+
+a:link {
+    color: rgb(0, 177, 44);
+}
+
+a:visited {
+    color: rgb(0, 177, 44);
+}
+
+a:hover {
+    color: rgb(0, 255, 128);
+}
+
+a:active {
+    color: rgb(255, 255, 255);
+}
+
+div#container {
+    background-image: linear-gradient(to bottom, black 100%, transparent 0%);
+}
+
+div.window {
+    border: solid;
+    border-color: black;
+    border-width: 2px;
+
+    width: fit-content;
+
+    position: absolute;
+
+    background-color: white;
+
+    box-shadow: 5px 5px 5px black;
+    backdrop-filter: blur(25%);
+
+    background-image: url('window.png');
+    background-repeat: both;
+
+    animation: windowScroll forwards 150s infinite;
+    animation-timing-function: linear;
+}
+
+div.window-title-bar {
+    cursor: move;
+
+    position: fixed;
+
+    user-select: none;
+
+    font-size: 16px;
+    padding: 4px;
+
+    background-color: rgb(122, 135, 255);
+
+    background-image: repeating-linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 50%) 100%);
+
+    z-index: 0;
+}
+
+div.window-content {
+    padding-left: 8px;
+}
+
+div.window-inner-content {
+    padding-right: 8px;
+    overflow: auto;
+}
+
+div.window-content h1 {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+
+    background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 50%) 100%);
+    background-clip: linear-gradient(to bottom, black 100%, transparent 0%, );
+
+    backdrop-filter: blur(0.25em);
+
+    padding: 4px;
+    width: fit-content;
+}
+
+div.window-content p {
+    background-color: rgba(0, 0, 0, 25%);
+
+    padding: 8px;
+
+    backdrop-filter: blur(10px);
+}
